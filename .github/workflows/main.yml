@@ -10,7 +10,6 @@ jobs:
       with:
         gist_token: ${{ secrets.GIST_TOKEN }}
         set_env: true
-        skip_bump: true
 
     - name: print repo global build number
       run: echo Global Build Number is $BUILDNUM_FOR_GLOBAL
