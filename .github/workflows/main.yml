@@ -1,0 +1,28 @@
+name: Build
+on: workflow_call
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: generate build number
+      uses: zyborg/gh-action-buildnum@v1 
+      with:
+        gist_token: ${{ secrets.GIST_TOKEN }}
+        set_env: true
+        skip_bump: true
+
+    - name: print repo global build number
+      run: echo Global Build Number is $BUILDNUM_FOR_GLOBAL
+
+    - name: get existing build number
+      uses: zyborg/gh-action-buildnum@v1
+      id: lastBuildNum
+      with:
+        gist_token: ${{ secrets.GIST_TOKEN }}
+        skip_bump: true
+
+    - name: dump last build num
+      run: |
+        echo Global Build Number is ${{ steps.lastBuildNum.outputs.global_buildnum }}
+        echo Workflow Build Number is ${{ steps.lastBuildNum.outputs.workflow_buildnum }}
