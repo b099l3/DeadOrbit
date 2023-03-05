@@ -1,15 +1,20 @@
+# buf.gen.yaml
 version: v1
 managed:
   enabled: true
   go_package_prefix:
-    default: github.com/b099l3/deadorbit/proto
+    # <module_name>   : name in go.mod
+    # <relative_path> : where generated code should be output
+    default:
+      github.com/b099l3/deadorbit/proto
+      # <module_name>/<relative_path>
+    # Remove `except` field if googleapis is not used
+    except:
+      - buf.build/googleapis/googleapis
 plugins:
-  - plugin: buf.build/protocolbuffers/go
+  - remote: buf.build/protocolbuffers/plugins/go
     out: .
     opt: paths=source_relative
-  - plugin: buf.build/bufbuild/connect-go
+  - name: twirp
     out: .
     opt: paths=source_relative
-  # - name: twirp
-  #   out: .
-  #   opt: paths=source_relative
