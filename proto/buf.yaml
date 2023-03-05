@@ -1,0 +1,16 @@
+version: v1
+name: buf.build/b099l3/deadorbit
+
+lint:
+  use:
+    - DEFAULT
+    - COMMENTS
+    - UNARY_RPC
+    - PACKAGE_NO_IMPORT_CYCLE
+
+  enum_zero_value_suffix: _UNSPECIFIED
+  service_suffix: Api
+
+breaking:
+  use:
+    - FILE

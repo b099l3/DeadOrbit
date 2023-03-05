@@ -1,0 +1,15 @@
+version: v1
+managed:
+  enabled: true
+  go_package_prefix:
+    default: github.com/b099l3/deadorbit/proto
+plugins:
+  - plugin: buf.build/protocolbuffers/go
+    out: .
+    opt: paths=source_relative
+  - plugin: buf.build/bufbuild/connect-go
+    out: .
+    opt: paths=source_relative
+  # - name: twirp
+  #   out: .
+  #   opt: paths=source_relative

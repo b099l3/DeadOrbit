@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package deadorbit.proto.test.v1;
+
+import "google/protobuf/timestamp.proto";
+
+// ThingServiceApi is the api.
+service ThingServiceApi {
+  // CreateThing is the call to create things.
+  rpc CreateThing(CreateThingRequest) returns (CreateThingResponse);
+  // GetAllThings is the call to get things.
+  rpc GetThings(GetThingsRequest) returns (GetThingsResponse);
+}
+
+// Thing is the object.
+message Thing {
+  // Thing id.
+  int32 id = 1;
+  // Text for the Thing.
+  string text = 2;
+  // A number to show the created date.
+  google.protobuf.Timestamp created_at = 3;
+}
+
+// CreateThingRequest is the message that request the creation of a thing.
+message CreateThingRequest { 
+  // text is the text for the Thing.
+  string text = 1; 
+}
+
+// CreateThingRequest is the response message when a thing is created.
+message CreateThingResponse { 
+  // the created thing.
+  Thing thing = 1; 
+}
+
+// GetThingsRequest is the empty message.
+message GetThingsRequest {}
+
+// GetThingsResponse is the response message from getting things.
+message GetThingsResponse { 
+  // The returned things.
+  repeated Thing things = 1; 
+}
