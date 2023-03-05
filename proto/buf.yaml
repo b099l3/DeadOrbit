@@ -1,6 +1,5 @@
 version: v1
 name: buf.build/b099l3/deadorbit
-
 lint:
   use:
     - DEFAULT

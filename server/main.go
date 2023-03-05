@@ -18,7 +18,6 @@ type thingServiceApi struct {
 func main() {
 
 	thingsServer := testv1.NewThingServiceApiServer(&thingServiceApi{})
-	// NewThingServiceApiServer(&thingServiceApi{})
 
 	mux := http.NewServeMux()
 	mux.Handle(thingsServer.PathPrefix(), thingsServer)
